@@ -1,0 +1,906 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Documentation &mdash; icsv v0.0.1 documentation</title>
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="icsv v0.0.1 documentation" href="index.html" />
+    <link rel="prev" title="Examples" href="examples.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="examples.html" title="Examples"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">icsv v0.0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="documentation">
+<h1>Documentation<a class="headerlink" href="#documentation" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="basic-classes">
+<h2>Basic classes<a class="headerlink" href="#basic-classes" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="icsv.Cell">
+<em class="property">class </em><tt class="descclassname">icsv.</tt><tt class="descname">Cell</tt><big>(</big><em>row</em>, <em>header</em>, <em>value</em><big>)</big><a class="headerlink" href="#icsv.Cell" title="Permalink to this definition">¶</a></dt>
+<dd><p>The Cell class encapsulates the data pertaining to a single cell entry
+within a CSV.</p>
+<dl class="method">
+<dt id="icsv.Cell.__init__">
+<tt class="descname">__init__</tt><big>(</big><em>row</em>, <em>header</em>, <em>value</em><big>)</big><a class="headerlink" href="#icsv.Cell.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>row</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; The row index where this cell is located</li>
+<li><strong>header</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The column header where this cell is located</li>
+<li><strong>value</strong> &#8211; The cell value</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="icsv.Cell.header">
+<tt class="descname">header</tt><big>(</big><big>)</big><a class="headerlink" href="#icsv.Cell.header" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the column header for this cell.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Return type:</th><td class="field-body">string</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="icsv.Cell.row">
+<tt class="descname">row</tt><big>(</big><big>)</big><a class="headerlink" href="#icsv.Cell.row" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the index of the row for this cell.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Return type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="icsv.Cell.value">
+<tt class="descname">value</tt><big>(</big><big>)</big><a class="headerlink" href="#icsv.Cell.value" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the value for this cell.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="icsv.Row">
+<em class="property">class </em><tt class="descclassname">icsv.</tt><tt class="descname">Row</tt><big>(</big><em>headers</em>, <em>dataMap</em>, <em>delimiter='</em>, <em>'</em><big>)</big><a class="headerlink" href="#icsv.Row" title="Permalink to this definition">¶</a></dt>
+<dd><p>The Row class encapsulates the data pertaining to a single row of a
+CSV file.</p>
+<dl class="method">
+<dt id="icsv.Row.__init__">
+<tt class="descname">__init__</tt><big>(</big><em>headers</em>, <em>dataMap</em>, <em>delimiter='</em>, <em>'</em><big>)</big><a class="headerlink" href="#icsv.Row.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>headers</strong> (<em>list of strings</em>) &#8211; The list of column headers</li>
+<li><strong>dataMap</strong> (<a class="reference external" href="http://docs.python.org/library/stdtypes.html#dict" title="(in Python v2.7)"><em>dict</em></a>) &#8211; A dictionary mapping headers to corresponding values</li>
+<li><strong>delimiter</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The CSV delimiter</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="icsv.Row.dict">
+<tt class="descname">dict</tt><big>(</big><big>)</big><a class="headerlink" href="#icsv.Row.dict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the row as a dictionary mapping column header values to
+cell values.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="icsv.Row.getCell">
+<tt class="descname">getCell</tt><big>(</big><em>header</em><big>)</big><a class="headerlink" href="#icsv.Row.getCell" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the cell value for the given column header.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>header</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The column header value</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name" colspan="2">Raises Exception:</th></tr>
+<tr><td>&nbsp;</td><td class="field-body"><p class="first last">Due to an unknown header value</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="icsv.Row.list">
+<tt class="descname">list</tt><big>(</big><big>)</big><a class="headerlink" href="#icsv.Row.list" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the row as a list of cell values in order of the
+column headers.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Return type:</th><td class="field-body">list</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="icsv.Row.numCols">
+<tt class="descname">numCols</tt><big>(</big><big>)</big><a class="headerlink" href="#icsv.Row.numCols" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the number of columns in this row.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Return type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="icsv.Col">
+<em class="property">class </em><tt class="descclassname">icsv.</tt><tt class="descname">Col</tt><big>(</big><em>header</em>, <em>data</em><big>)</big><a class="headerlink" href="#icsv.Col" title="Permalink to this definition">¶</a></dt>
+<dd><p>The Col class encapsulates the data pertaining to a single
+column of a CSV file.</p>
+<dl class="method">
+<dt id="icsv.Col.__init__">
+<tt class="descname">__init__</tt><big>(</big><em>header</em>, <em>data</em><big>)</big><a class="headerlink" href="#icsv.Col.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>header</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The column header</li>
+<li><strong>data</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; The list of row values in this column</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="icsv.Col.data">
+<tt class="descname">data</tt><big>(</big><big>)</big><a class="headerlink" href="#icsv.Col.data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the list of data values in this column.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Return type:</th><td class="field-body">list</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="icsv.Col.getCell">
+<tt class="descname">getCell</tt><big>(</big><em>row</em><big>)</big><a class="headerlink" href="#icsv.Col.getCell" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a cell value for a specific row in this column.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>row</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; The index of the row where the cell is located</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name" colspan="2">Raises Exception:</th></tr>
+<tr><td>&nbsp;</td><td class="field-body"><p class="first last">If row is not a valid index</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="icsv.Col.header">
+<tt class="descname">header</tt><big>(</big><big>)</big><a class="headerlink" href="#icsv.Col.header" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the header for this column.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Return type:</th><td class="field-body">string</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="icsv.Col.numRows">
+<tt class="descname">numRows</tt><big>(</big><big>)</big><a class="headerlink" href="#icsv.Col.numRows" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the number of rows in this column.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Return type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="the-icsv-class">
+<h2>The icsv class<a class="headerlink" href="#the-icsv-class" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="icsv.icsv">
+<em class="property">class </em><tt class="descclassname">icsv.</tt><tt class="descname">icsv</tt><big>(</big><em>headers</em>, <em>delimiter='</em>, <em>'</em><big>)</big><a class="headerlink" href="#icsv.icsv" title="Permalink to this definition">¶</a></dt>
+<dd><p>The icsv class encapsulates the data contained in a single CSV
+file.</p>
+<p>A CSV consists of zero or more rows of information where each row
+has one or more named columns. The names of the columns are referred to
+as headers.</p>
+<p>The icsv class provides an interface for easily adding new data to a
+CSV, writing the data to a CSV file, and creating an icsv from a file.</p>
+<dl class="method">
+<dt id="icsv.icsv.__init__">
+<tt class="descname">__init__</tt><big>(</big><em>headers</em>, <em>delimiter='</em>, <em>'</em><big>)</big><a class="headerlink" href="#icsv.icsv.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>headers</strong> (<em>list of strings</em>) &#8211; The list of column headers</li>
+<li><strong>delimiter</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The CSV delimiter</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="icsv.icsv.addRow">
+<tt class="descname">addRow</tt><big>(</big><em>items</em><big>)</big><a class="headerlink" href="#icsv.icsv.addRow" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a row of data to the CSV.</p>
+<p><tt class="docutils literal"><span class="pre">items</span></tt> can be a list of values, or a dictionary of values.</p>
+<ul class="simple">
+<li>items &#8211; The list, or dictionary of row items</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Raises:</th><td class="field-body"><ul class="first last simple">
+<li><strong>Exception</strong> &#8211; If <tt class="docutils literal"><span class="pre">items</span></tt> is a list and is not equal to the
+number of headers</li>
+<li><strong>Exception</strong> &#8211; If <tt class="docutils literal"><span class="pre">items</span></tt> is a dictionary and contains entries
+for unknown headers</li>
+<li><strong>Exception</strong> &#8211; If <tt class="docutils literal"><span class="pre">items</span></tt> is not a list or a dictionary</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="icsv.icsv.data">
+<tt class="descname">data</tt><big>(</big><big>)</big><a class="headerlink" href="#icsv.icsv.data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the list of <a class="reference internal" href="#icsv.Row" title="icsv.Row"><tt class="xref py py-class docutils literal"><span class="pre">icsv.Row</span></tt></a> objects pertaining to the rows
+of this CSV.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Return type:</th><td class="field-body">list of <a class="reference internal" href="#icsv.Row" title="icsv.Row"><tt class="xref py py-class docutils literal"><span class="pre">icsv.Row</span></tt></a> objects</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="icsv.icsv.delimiter">
+<tt class="descname">delimiter</tt><big>(</big><big>)</big><a class="headerlink" href="#icsv.icsv.delimiter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the delimiter value for this CSV.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Return type:</th><td class="field-body">string</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="icsv.icsv.filter">
+<tt class="descname">filter</tt><big>(</big><em>fn</em><big>)</big><a class="headerlink" href="#icsv.icsv.filter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply a filter function to the CSV data.</p>
+<p>The filter function must have the following signature:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">filterFn</span><span class="p">(</span><span class="n">rowIndex</span><span class="p">,</span> <span class="n">columnHeader</span><span class="p">,</span> <span class="n">cellValue</span><span class="p">)</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>fn</strong> (<em>function(rowIndex, colHeader, cellValue)</em>) &#8211; The filter function</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A list of Cells for which <tt class="docutils literal"><span class="pre">fn</span></tt> returned True</p>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">List of <a class="reference internal" href="#icsv.Cell" title="icsv.Cell"><tt class="xref py py-class docutils literal"><span class="pre">icsv.Cell</span></tt></a> objects</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="icsv.icsv.fromFile">
+<em class="property">classmethod </em><tt class="descname">fromFile</tt><big>(</big><em>filename</em>, <em>headers=None</em>, <em>delimiter='</em>, <em>'</em><big>)</big><a class="headerlink" href="#icsv.icsv.fromFile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create an icsv from a given CSV file.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>filename</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The path to the CSV file</li>
+<li><strong>headers</strong> (<em>list of strings</em>) &#8211; The list of CSV headers. If this is None they will be
+automatically read from the file</li>
+<li><strong>delimiter</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The CSV delimiter</li>
+<li><strong>containsHeaders</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) &#8211; True if the file list the headers as the first
+line, False if it does not</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Raises:</th><td class="field-body"><ul class="first last simple">
+<li><strong>Exception</strong> &#8211; If the file does not exist</li>
+<li><strong>Exception</strong> &#8211; If <tt class="docutils literal"><span class="pre">headers</span></tt> is None and <tt class="docutils literal"><span class="pre">containsHeaders</span></tt>
+is False</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="icsv.icsv.getCell">
+<tt class="descname">getCell</tt><big>(</big><em>row</em>, <em>header</em><big>)</big><a class="headerlink" href="#icsv.icsv.getCell" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the <a class="reference internal" href="#icsv.Cell" title="icsv.Cell"><tt class="xref py py-class docutils literal"><span class="pre">icsv.Cell</span></tt></a> object contained at the given
+row index and column header.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>row</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; The row index</li>
+<li><strong>header</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The column header</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">A <a class="reference internal" href="#icsv.Cell" title="icsv.Cell"><tt class="xref py py-class docutils literal"><span class="pre">icsv.Cell</span></tt></a> object</p>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Raises:</th><td class="field-body"><ul class="first last simple">
+<li><strong>Exception</strong> &#8211; If an invalid row index is given</li>
+<li><strong>Exception</strong> &#8211; If an unknown header is given</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="icsv.icsv.getCol">
+<tt class="descname">getCol</tt><big>(</big><em>header</em><big>)</big><a class="headerlink" href="#icsv.icsv.getCol" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the <a class="reference internal" href="#icsv.Col" title="icsv.Col"><tt class="xref py py-class docutils literal"><span class="pre">icsv.Col</span></tt></a> object for the given column header.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>header</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The column header</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">A <a class="reference internal" href="#icsv.Col" title="icsv.Col"><tt class="xref py py-class docutils literal"><span class="pre">icsv.Col</span></tt></a> object</p>
+</td>
+</tr>
+<tr class="field"><th class="field-name" colspan="2">Raises Exception:</th></tr>
+<tr><td>&nbsp;</td><td class="field-body"><p class="first last">If an unknown header is given</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="icsv.icsv.getHeader">
+<tt class="descname">getHeader</tt><big>(</big><em>index</em><big>)</big><a class="headerlink" href="#icsv.icsv.getHeader" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the column header for the given column index.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>index</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; The column index</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">string</p>
+</td>
+</tr>
+<tr class="field"><th class="field-name" colspan="2">Raises Exception:</th></tr>
+<tr><td>&nbsp;</td><td class="field-body"><p class="first last">If an invalid column index is given</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="icsv.icsv.getHeaderIndex">
+<tt class="descname">getHeaderIndex</tt><big>(</big><em>header</em><big>)</big><a class="headerlink" href="#icsv.icsv.getHeaderIndex" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the column index for the given column header.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>header</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The column header</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">int</p>
+</td>
+</tr>
+<tr class="field"><th class="field-name" colspan="2">Raises Exception:</th></tr>
+<tr><td>&nbsp;</td><td class="field-body"><p class="first last">If an unknown header is given</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="icsv.icsv.getHeaders">
+<tt class="descname">getHeaders</tt><big>(</big><big>)</big><a class="headerlink" href="#icsv.icsv.getHeaders" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the list of headers for this CSV file as a CSV string.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Return type:</th><td class="field-body">list of strings</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="icsv.icsv.getRow">
+<tt class="descname">getRow</tt><big>(</big><em>row=-1</em><big>)</big><a class="headerlink" href="#icsv.icsv.getRow" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the given row.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>row</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; The row index (last row be default)</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name" colspan="2">Raises Exception:</th></tr>
+<tr><td>&nbsp;</td><td class="field-body"><p class="first last">If row is not a valid index</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="icsv.icsv.headers">
+<tt class="descname">headers</tt><big>(</big><big>)</big><a class="headerlink" href="#icsv.icsv.headers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the list of column headers for this CSV.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Return type:</th><td class="field-body">list of strings</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="icsv.icsv.map">
+<tt class="descname">map</tt><big>(</big><em>fn</em>, <em>overwrite=False</em><big>)</big><a class="headerlink" href="#icsv.icsv.map" title="Permalink to this definition">¶</a></dt>
+<dd><p>Map all of the values of the CSV.</p>
+<p>The map function must have the following signature:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">mapFn</span><span class="p">(</span><span class="n">rowIndex</span><span class="p">,</span> <span class="n">columnHeader</span><span class="p">,</span> <span class="n">cellValue</span><span class="p">)</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>fn</strong> (<em>function(rowIndex, columnHeader, cellValue)</em>) &#8211; The map function</li>
+<li><strong>overwrite</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) &#8211; True to replace the current icsv data with
+the mapped data</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">An <a class="reference internal" href="#icsv.icsv" title="icsv.icsv"><tt class="xref py py-class docutils literal"><span class="pre">icsv.icsv</span></tt></a> object containing the mapped data</p>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">An <a class="reference internal" href="#icsv.icsv" title="icsv.icsv"><tt class="xref py py-class docutils literal"><span class="pre">icsv.icsv</span></tt></a> object</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="icsv.icsv.numCols">
+<tt class="descname">numCols</tt><big>(</big><big>)</big><a class="headerlink" href="#icsv.icsv.numCols" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the number of columns in the CSV.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Return type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="icsv.icsv.numRows">
+<tt class="descname">numRows</tt><big>(</big><big>)</big><a class="headerlink" href="#icsv.icsv.numRows" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the number of rows in the CSV.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Return type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="icsv.icsv.removeRow">
+<tt class="descname">removeRow</tt><big>(</big><em>row=-1</em><big>)</big><a class="headerlink" href="#icsv.icsv.removeRow" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove the given row.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>row</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; The index of the row to remove (last row by default)</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name" colspan="2">Raises Exception:</th></tr>
+<tr><td>&nbsp;</td><td class="field-body"><p class="first last">If row is not a valid index</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="icsv.icsv.setCell">
+<tt class="descname">setCell</tt><big>(</big><em>header</em>, <em>value</em>, <em>row=-1</em><big>)</big><a class="headerlink" href="#icsv.icsv.setCell" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the value of a cell.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>header</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The header for the cell</li>
+<li><strong>value</strong> &#8211; The cell value</li>
+<li><strong>row</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; The row index (last row by default)</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Raises:</th><td class="field-body"><ul class="first last simple">
+<li><strong>Exception</strong> &#8211; If an invalid row index is given</li>
+<li><strong>Exception</strong> &#8211; If an invalid header is given</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="icsv.icsv.write">
+<tt class="descname">write</tt><big>(</big><em>filename</em>, <em>useHeaders=True</em>, <em>overwrite=True</em><big>)</big><a class="headerlink" href="#icsv.icsv.write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write the data to the given CSV file.</p>
+<p>This is the same as calling:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">icsv</span>
+<span class="n">aCsv</span> <span class="o">=</span> <span class="n">icsv</span><span class="o">.</span><span class="n">icsv</span><span class="p">()</span>
+<span class="n">writer</span> <span class="o">=</span> <span class="n">icsv</span><span class="o">.</span><span class="n">Writer</span><span class="o">.</span><span class="n">fromCsv</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">aCsv</span><span class="p">,</span> <span class="n">useHeaders</span><span class="p">,</span> <span class="n">overwrite</span><span class="p">)</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>filename</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The path to the CSV filename</li>
+<li><strong>useHeaders</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) &#8211; True to write the CSV headers as the first
+line the file, False does not do this</li>
+<li><strong>overwrite</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) &#8211; True to overwrite existing files, False will
+result in an Exception</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name" colspan="2">Raises Exception:</th></tr>
+<tr><td>&nbsp;</td><td class="field-body"><p class="first last">If <tt class="docutils literal"><span class="pre">overwrite</span></tt> is False, and the file already
+exists</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="the-writer-class">
+<h2>The Writer class<a class="headerlink" href="#the-writer-class" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="icsv.Writer">
+<em class="property">class </em><tt class="descclassname">icsv.</tt><tt class="descname">Writer</tt><big>(</big><em>filename</em>, <em>headers</em>, <em>delimiter='</em>, <em>'</em>, <em>useHeaders=True</em>, <em>overwrite=True</em><big>)</big><a class="headerlink" href="#icsv.Writer" title="Permalink to this definition">¶</a></dt>
+<dd><p>The Writer class provides an interface for writing a CSV file.</p>
+<p>This class can be used to write a pre-existing <a class="reference internal" href="#icsv.icsv" title="icsv.icsv"><tt class="xref py py-class docutils literal"><span class="pre">icsv.icsv</span></tt></a> object
+to a file, or be used to write data to a filename in real time.</p>
+<p>The Writer class provides a wrapper to the <a class="reference internal" href="#icsv.icsv" title="icsv.icsv"><tt class="xref py py-class docutils literal"><span class="pre">icsv.icsv</span></tt></a> class which
+will immediately write new rows to the CSV file.</p>
+<dl class="method">
+<dt id="icsv.Writer.__init__">
+<tt class="descname">__init__</tt><big>(</big><em>filename</em>, <em>headers</em>, <em>delimiter='</em>, <em>'</em>, <em>useHeaders=True</em>, <em>overwrite=True</em><big>)</big><a class="headerlink" href="#icsv.Writer.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>filename</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The filename for the CSV file to write</li>
+<li><strong>headers</strong> (<em>list of string</em>) &#8211; The list of column headers for this CSV file</li>
+<li><strong>delimiter</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The CSV delimiter to use</li>
+<li><strong>useHeaders</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) &#8211; True will write the headers to the first line of the
+created CSV file, False will not</li>
+<li><strong>overwrite</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) &#8211; True will overwrite existing files, False will not</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name" colspan="2">Raises Exception:</th></tr>
+<tr><td>&nbsp;</td><td class="field-body"><p class="first last">If <tt class="docutils literal"><span class="pre">overwrite</span></tt> is False, and the file already
+exists</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="icsv.Writer.delimiter">
+<tt class="descname">delimiter</tt><big>(</big><big>)</big><a class="headerlink" href="#icsv.Writer.delimiter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the delimiter used for this CSV file.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Return type:</th><td class="field-body">string</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="icsv.Writer.fromCsv">
+<em class="property">classmethod </em><tt class="descname">fromCsv</tt><big>(</big><em>filename</em>, <em>csv</em>, <em>useHeaders=True</em>, <em>overwrite=True</em><big>)</big><a class="headerlink" href="#icsv.Writer.fromCsv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write the data to the given CSV file.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>filename</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The path to the CSV filename</li>
+<li><strong>useHeaders</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) &#8211; True to write the CSV headers as the first
+line the file, False does not do this</li>
+<li><strong>overwrite</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) &#8211; True to overwrite existing files, False will
+result in an Exception</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name" colspan="2">Raises Exception:</th></tr>
+<tr><td>&nbsp;</td><td class="field-body"><p class="first last">If <tt class="docutils literal"><span class="pre">overwrite</span></tt> is False, and the file already
+exists</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="icsv.Writer.getHeaders">
+<tt class="descname">getHeaders</tt><big>(</big><big>)</big><a class="headerlink" href="#icsv.Writer.getHeaders" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the list of headers for this CSV file as a CSV string.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Return type:</th><td class="field-body">list of strings</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="icsv.Writer.headers">
+<tt class="descname">headers</tt><big>(</big><big>)</big><a class="headerlink" href="#icsv.Writer.headers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the list of headers for this CSV file.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Return type:</th><td class="field-body">list of strings</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="icsv.Writer.writeRow">
+<tt class="descname">writeRow</tt><big>(</big><em>items</em><big>)</big><a class="headerlink" href="#icsv.Writer.writeRow" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write a new row of data to the CSV.</p>
+<p><tt class="docutils literal"><span class="pre">items</span></tt> can be a list of values, or a dictionary of values.</p>
+<ul class="simple">
+<li>items &#8211; The list, or dictionary of row items</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Raises:</th><td class="field-body"><ul class="first last simple">
+<li><strong>Exception</strong> &#8211; If <tt class="docutils literal"><span class="pre">items</span></tt> is a list and is not equal to the
+number of headers</li>
+<li><strong>Exception</strong> &#8211; If <tt class="docutils literal"><span class="pre">items</span></tt> is a dictionary and contains entries
+for unknown headers</li>
+<li><strong>Exception</strong> &#8211; If <tt class="docutils literal"><span class="pre">items</span></tt> is not a list or a dictionary</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Documentation</a><ul>
+<li><a class="reference internal" href="#basic-classes">Basic classes</a></li>
+<li><a class="reference internal" href="#the-icsv-class">The icsv class</a></li>
+<li><a class="reference internal" href="#the-writer-class">The Writer class</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="examples.html"
+                        title="previous chapter">Examples</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/documentation.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="examples.html" title="Examples"
+             >previous</a> |</li>
+        <li><a href="index.html">icsv v0.0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Brett Ponsler.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.1.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,304 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Examples &mdash; icsv v0.0.1 documentation</title>
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="icsv v0.0.1 documentation" href="index.html" />
+    <link rel="next" title="Documentation" href="documentation.html" />
+    <link rel="prev" title="Introduction" href="intro.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="documentation.html" title="Documentation"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="intro.html" title="Introduction"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">icsv v0.0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="examples">
+<h1>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h1>
+<p>Examples of how to use icsv...</p>
+<div class="section" id="basics">
+<h2>Basics<a class="headerlink" href="#basics" title="Permalink to this headline">¶</a></h2>
+<p>It is easy to create CSV objects:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">icsv</span> <span class="kn">import</span> <span class="n">icsv</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">[</span><span class="s">&quot;Header 1&quot;</span><span class="p">,</span> <span class="s">&quot;Second Header&quot;</span><span class="p">,</span> <span class="s">&quot;Three&quot;</span><span class="p">]</span>
+<span class="n">i</span> <span class="o">=</span> <span class="n">icsv</span><span class="p">(</span><span class="n">headers</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Which can be used to add new rows of data:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># The following are valid, and equivalent</span>
+<span class="n">i</span><span class="o">.</span><span class="n">addRow</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="n">i</span><span class="o">.</span><span class="n">addRow</span><span class="p">({</span><span class="s">&quot;Header 1&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s">&quot;Second Header&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s">&quot;Three&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">})</span>  <span class="c"># Order does not matter</span>
+
+<span class="c"># The following raise Exceptions</span>
+<span class="n">i</span><span class="o">.</span><span class="n">addRow</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>          <span class="c"># Not enough items</span>
+<span class="n">i</span><span class="o">.</span><span class="n">addRow</span><span class="p">({</span><span class="s">&quot;Unknown&quot;</span><span class="p">:</span> <span class="mi">7</span><span class="p">})</span>  <span class="c"># An unknown header value</span>
+</pre></div>
+</div>
+<p>It is also easy to set the value of specific cells:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># These are equivalent</span>
+<span class="n">i</span><span class="o">.</span><span class="n">setCell</span><span class="p">(</span><span class="s">&quot;Header 1&quot;</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>                     <span class="c"># Default row is -1 (last row)</span>
+<span class="n">i</span><span class="o">.</span><span class="n">setCell</span><span class="p">(</span><span class="s">&quot;Header 1&quot;</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">i</span><span class="o">.</span><span class="n">setCell</span><span class="p">(</span><span class="s">&quot;Header 1&quot;</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="p">(</span><span class="n">i</span><span class="o">.</span><span class="n">numRows</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
+
+<span class="c"># These are not valid</span>
+<span class="n">i</span><span class="o">.</span><span class="n">setCell</span><span class="p">(</span><span class="s">&quot;Unknown&quot;</span><span class="p">,</span> <span class="mi">11</span><span class="p">)</span>                     <span class="c"># Unknown header</span>
+<span class="n">i</span><span class="o">.</span><span class="n">setCell</span><span class="p">(</span><span class="s">&quot;Header 1&quot;</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="n">i</span><span class="o">.</span><span class="n">numRows</span><span class="p">())</span>      <span class="c"># Row index out of range</span>
+<span class="n">i</span><span class="o">.</span><span class="n">setCell</span><span class="p">(</span><span class="s">&quot;Header 1&quot;</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">)</span>               <span class="c"># Invalid row index</span>
+</pre></div>
+</div>
+<p>Accessing CSV data is also easy:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># Access specific rows</span>
+<span class="n">row</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">getRow</span><span class="p">()</span>                           <span class="c"># Default row is -1 (last row)</span>
+<span class="n">row</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">getRow</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>                         <span class="c"># Same as above</span>
+<span class="n">row</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">getRow</span><span class="p">(</span><span class="n">i</span><span class="o">.</span><span class="n">numRows</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>            <span class="c"># Save as above</span>
+<span class="n">row</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">getRow</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c"># Access specific columns</span>
+<span class="n">col</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">getCol</span><span class="p">(</span><span class="s">&quot;Header 1&quot;</span><span class="p">)</span>
+<span class="n">col</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">getCol</span><span class="p">(</span><span class="s">&quot;Second Header&quot;</span><span class="p">)</span>
+<span class="n">col</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">getCol</span><span class="p">(</span><span class="s">&quot;Three&quot;</span><span class="p">)</span>
+
+<span class="c"># Access specific cells</span>
+<span class="n">cell</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">getCell</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s">&quot;Header 1&quot;</span><span class="p">)</span>
+<span class="n">cell</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">getCell</span><span class="p">((</span><span class="n">i</span><span class="o">.</span><span class="n">numRows</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span><span class="p">),</span> <span class="s">&quot;Second Header&quot;</span><span class="p">)</span>
+<span class="n">cell</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">getCell</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">&quot;Third&quot;</span><span class="p">)</span>
+
+<span class="c"># The following are invalid</span>
+<span class="n">row</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">getRow</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span>                         <span class="c"># Invalid row index</span>
+<span class="n">row</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">getRow</span><span class="p">(</span><span class="n">i</span><span class="o">.</span><span class="n">numRows</span><span class="p">())</span>                <span class="c"># Row index out of range</span>
+<span class="n">col</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">getCol</span><span class="p">(</span><span class="s">&quot;Unknown&quot;</span><span class="p">)</span>                  <span class="c"># Unknown column header</span>
+<span class="n">cell</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">getCell</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="s">&quot;Header 1&quot;</span><span class="p">)</span>           <span class="c"># Invalid row index</span>
+<span class="n">cell</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">getCell</span><span class="p">(</span><span class="n">i</span><span class="o">.</span><span class="n">numRows</span><span class="p">(),</span> <span class="s">&quot;Header 1&quot;</span><span class="p">)</span>  <span class="c"># Row index out of range</span>
+<span class="n">cell</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">getCell</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s">&quot;Unknown&quot;</span><span class="p">)</span>             <span class="c"># Unknown column header</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="writing-a-csv-file">
+<h2>Writing a CSV file<a class="headerlink" href="#writing-a-csv-file" title="Permalink to this headline">¶</a></h2>
+<p>There are two simple ways to write a CSV file.</p>
+<p>The first is to create a <a class="reference internal" href="documentation.html#icsv.Writer" title="icsv.Writer"><tt class="xref py py-class docutils literal"><span class="pre">icsv.Writer</span></tt></a> object:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">icsv</span> <span class="kn">import</span> <span class="n">Writer</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">[</span><span class="s">&quot;Header 1&quot;</span><span class="p">,</span> <span class="s">&quot;Second Header&quot;</span><span class="p">,</span> <span class="s">&quot;Third&quot;</span><span class="p">]</span>
+<span class="n">writer</span> <span class="o">=</span> <span class="n">Writer</span><span class="p">(</span><span class="s">&quot;/tmp/test.csv&quot;</span><span class="p">,</span> <span class="n">headers</span><span class="p">)</span>
+
+<span class="c"># Optional constructor aguments</span>
+<span class="c">#    delimiter -- The CSV delimiter string (&#39;,&#39; by default)</span>
+<span class="c">#    useHeaders -- True (default) will write the headers as the</span>
+<span class="c">#                  first line of the CSV file, False will not</span>
+<span class="c">#    overwrite -- True (default) will overwrite existing CSV files</span>
+<span class="c">#                 False will raise an Exception on existing files</span>
+</pre></div>
+</div>
+<p>Now you can write new rows to the CSV file:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># The following lines are equivalent</span>
+<span class="n">writer</span><span class="o">.</span><span class="n">writeRow</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="n">writer</span><span class="o">.</span><span class="n">writeRow</span><span class="p">({</span><span class="s">&quot;Third&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s">&quot;Second Header&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s">&quot;Header 1&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">})</span>  <span class="c"># Order does not matter</span>
+</pre></div>
+</div>
+<p>The <a class="reference internal" href="documentation.html#icsv.Writer.writeRow" title="icsv.Writer.writeRow"><tt class="xref py py-func docutils literal"><span class="pre">icsv.Writer.writeRow()</span></tt></a> will write the data to the CSV file immediately.</p>
+<p>The second way to write a CSV file is by using a pre-existing <a class="reference internal" href="documentation.html#icsv.icsv" title="icsv.icsv"><tt class="xref py py-class docutils literal"><span class="pre">icsv.icsv</span></tt></a> object as such:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">icsv</span> <span class="kn">import</span> <span class="n">icsv</span><span class="p">,</span> <span class="n">Writer</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">[</span><span class="s">&quot;Header 1&quot;</span><span class="p">,</span> <span class="s">&quot;Second Header&quot;</span><span class="p">,</span> <span class="s">&quot;Third&quot;</span><span class="p">]</span>
+<span class="n">i</span> <span class="o">=</span> <span class="n">icsv</span><span class="p">(</span><span class="n">headers</span><span class="p">)</span>
+
+<span class="c"># Add a few rows to the CSV</span>
+<span class="n">i</span><span class="o">.</span><span class="n">addRow</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="n">i</span><span class="o">.</span><span class="n">addRow</span><span class="p">([</span><span class="s">&quot;Types&quot;</span><span class="p">,</span> <span class="s">&quot;do not&quot;</span><span class="p">,</span> <span class="s">&quot;matter&quot;</span><span class="p">])</span>
+<span class="n">i</span><span class="o">.</span><span class="n">addRow</span><span class="p">({</span><span class="s">&quot;Third&quot;</span><span class="p">:</span> <span class="bp">True</span><span class="p">})</span>
+
+<span class="c"># Write all of the CSV data to the file, and get a Writer</span>
+<span class="n">writer</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&quot;/tmp/test.csv&quot;</span><span class="p">)</span>
+<span class="n">writer</span> <span class="o">=</span> <span class="n">Writer</span><span class="o">.</span><span class="n">fromCsv</span><span class="p">(</span><span class="s">&quot;/tmp/test.csv&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>  <span class="c"># Same as above</span>
+
+<span class="c"># Optional constructor aguments</span>
+<span class="c">#    useHeaders -- True (default) will write the headers as the</span>
+<span class="c">#                  first line of the CSV file, False will not</span>
+<span class="c">#    overwrite -- True (default) will overwrite existing CSV files</span>
+<span class="c">#                 False will raise an Exception on existing files</span>
+
+<span class="c"># Now the writer can be used to write additonal data</span>
+<span class="n">writer</span><span class="o">.</span><span class="n">writeRow</span><span class="p">([</span><span class="s">&quot;a&quot;</span><span class="p">,</span> <span class="s">&quot;b&quot;</span><span class="p">,</span> <span class="s">&quot;c&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="reading-a-csv-file">
+<h2>Reading a CSV file<a class="headerlink" href="#reading-a-csv-file" title="Permalink to this headline">¶</a></h2>
+<p>Reading data from a CSV file is very easy:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">icsv</span> <span class="kn">import</span> <span class="n">icsv</span>
+
+<span class="c"># Automatically read CSV headers from the first line of the CSV file</span>
+<span class="n">i</span> <span class="o">=</span> <span class="n">icsv</span><span class="o">.</span><span class="n">fromFile</span><span class="p">(</span><span class="s">&quot;/tmp/test.csv&quot;</span><span class="p">)</span>
+
+<span class="c"># Or, specify the headers and delimiter</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">[</span><span class="s">&quot;Header 1&quot;</span><span class="p">,</span> <span class="s">&quot;Second Header&quot;</span><span class="p">,</span> <span class="s">&quot;Third&quot;</span><span class="p">]</span>
+<span class="n">i</span> <span class="o">=</span> <span class="n">icsv</span><span class="o">.</span><span class="n">fromFile</span><span class="p">(</span><span class="s">&quot;/tmp/test.csv&quot;</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s">&#39;,&#39;</span><span class="p">)</span>
+
+<span class="c"># Now the data is accessible</span>
+<span class="k">print</span> <span class="n">i</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="advanced">
+<h2>Advanced<a class="headerlink" href="#advanced" title="Permalink to this headline">¶</a></h2>
+<p>It is easy to filter CSV data:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">icsv</span> <span class="kn">import</span> <span class="n">icsv</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">[</span><span class="s">&quot;Header 1&quot;</span><span class="p">,</span> <span class="s">&quot;Second Header&quot;</span><span class="p">,</span> <span class="s">&quot;Third&quot;</span><span class="p">]</span>
+<span class="n">i</span> <span class="o">=</span> <span class="n">icsv</span><span class="p">(</span><span class="n">headers</span><span class="p">)</span>
+
+<span class="c"># Add some data</span>
+<span class="n">i</span><span class="o">.</span><span class="n">addRow</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="n">i</span><span class="o">.</span><span class="n">addRow</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">])</span>
+<span class="n">i</span><span class="o">.</span><span class="n">addRow</span><span class="p">([</span><span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">])</span>
+
+<span class="k">def</span> <span class="nf">evenCells</span><span class="p">(</span><span class="n">rowIndex</span><span class="p">,</span> <span class="n">colHeader</span><span class="p">,</span> <span class="n">cellValue</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">cellValue</span> <span class="o">%</span> <span class="mi">2</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span>
+
+<span class="c"># Get a list of the CSV cells with even values</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">evenCells</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
+    <span class="k">print</span> <span class="n">c</span><span class="o">.</span><span class="n">row</span><span class="p">(),</span> <span class="n">c</span><span class="o">.</span><span class="n">header</span><span class="p">(),</span> <span class="n">c</span><span class="o">.</span><span class="n">value</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>It is also easy to transform the CSV data:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">icsv</span> <span class="kn">import</span> <span class="n">icsv</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">[</span><span class="s">&quot;Header 1&quot;</span><span class="p">,</span> <span class="s">&quot;Second Header&quot;</span><span class="p">,</span> <span class="s">&quot;Third&quot;</span><span class="p">]</span>
+<span class="n">i</span> <span class="o">=</span> <span class="n">icsv</span><span class="p">(</span><span class="n">headers</span><span class="p">)</span>
+
+<span class="c"># Add some data</span>
+<span class="n">i</span><span class="o">.</span><span class="n">addRow</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="n">i</span><span class="o">.</span><span class="n">addRow</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">])</span>
+<span class="n">i</span><span class="o">.</span><span class="n">addRow</span><span class="p">([</span><span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">])</span>
+
+<span class="k">def</span> <span class="nf">addValue</span><span class="p">(</span><span class="n">rowIndex</span><span class="p">,</span> <span class="n">colHeader</span><span class="p">,</span> <span class="n">cellValue</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">rowIndex</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="n">cellValue</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="k">return</span> <span class="n">cellValue</span>
+
+<span class="c"># Transform the data</span>
+<span class="n">i2</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">addValue</span><span class="p">)</span>  <span class="c"># i remains unchanged</span>
+
+<span class="c"># View the CSV data</span>
+<span class="k">for</span> <span class="n">rowIndex</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i2</span><span class="o">.</span><span class="n">numRows</span><span class="p">()):</span>
+    <span class="n">row</span> <span class="o">=</span> <span class="n">i2</span><span class="o">.</span><span class="n">getRow</span><span class="p">(</span><span class="n">rowIndex</span><span class="p">)</span>
+    <span class="k">print</span> <span class="s">&quot;[</span><span class="si">%d</span><span class="s">]: </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">rowIndex</span><span class="p">,</span> <span class="n">row</span><span class="p">)</span>
+
+<span class="c"># Or, transform the CSV</span>
+<span class="n">i</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">addValue</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>  <span class="c"># i is changed</span>
+
+<span class="c"># View the CSV data</span>
+<span class="k">for</span> <span class="n">rowIndex</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span><span class="o">.</span><span class="n">numRows</span><span class="p">()):</span>
+    <span class="n">row</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">getRow</span><span class="p">(</span><span class="n">rowIndex</span><span class="p">)</span>
+    <span class="k">print</span> <span class="s">&quot;[</span><span class="si">%d</span><span class="s">]: </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">rowIndex</span><span class="p">,</span> <span class="n">row</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Examples</a><ul>
+<li><a class="reference internal" href="#basics">Basics</a></li>
+<li><a class="reference internal" href="#writing-a-csv-file">Writing a CSV file</a></li>
+<li><a class="reference internal" href="#reading-a-csv-file">Reading a CSV file</a></li>
+<li><a class="reference internal" href="#advanced">Advanced</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="intro.html"
+                        title="previous chapter">Introduction</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="documentation.html"
+                        title="next chapter">Documentation</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/examples.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="documentation.html" title="Documentation"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="intro.html" title="Introduction"
+             >previous</a> |</li>
+        <li><a href="index.html">icsv v0.0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Brett Ponsler.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.1.
+    </div>
+  </body>
+</html>
