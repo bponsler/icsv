@@ -4,7 +4,7 @@ icsv is a Python module which provides an interface for easily interacting with 
 
 For full documentation of icsv visit [this page](http://bponsler.github.io/icsv/index.html).
 
-The latest version is *0.0.1* which was released on 10/12/2013.
+The latest version is *0.0.1* which was released on 09/12/2013.
 
 ## Install and set-up ##
 
